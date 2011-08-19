@@ -12,12 +12,23 @@ How?
 Just run it from the command line:
 	$ ./webbnote-creator.pl <your markdown file>
 
+Writing the presentation
+-------------------------------
+With WebbNote Creator you write your presentation in any plain text editor, and use Markdown whenever appropriate. To make a new slide, simply use the tag
+
+	[newslide]
+
+(You don't have to start your document with a [newslide] tag.) Any additional HTML needed will be added by WebbNote Creator or the Markdown parser.
+
 Dependencies
 -----------------
 * You need to have Markdown.pl installed on your system.
 
 Changelog
 --------------
+
+### 0.1.2
+* Added the "Writing the presentation" part of this document.
 
 ### 0.1.1
 * Added this README file.
