@@ -11,7 +11,7 @@
 # Copyright (c) 2011 Henrik Carlsson
 # <…>
 #
-# Version 0.1
+# Version 0.1.1
 #
 
 # Define global variables
