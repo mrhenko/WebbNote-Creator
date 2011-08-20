@@ -57,6 +57,7 @@ open PRES, $wn_markdown_file_name or die 'I\'m sorry. That Markdown file could n
 $wn_markdown_file = join('', <PRES>);
 close PRES;
 
+
 # Create a temp file that can be piped to Markdown
 open (TEMP, '>>wn_temp');
 print TEMP $wn_markdown_file;
@@ -69,9 +70,19 @@ $wn_markdown_file = `markdown.pl wn_temp`;
 `rm wn_temp`;
 
 # Process
-$wn_markdown_file = '<section class="page">' . "\n" . $wn_markdown_file . "\n" . '</section>' . "\n";
-$rp = "\n</section>\n\n<section class=\"page\">\n";
+# Turn the Markdown for horizontal lines into
+# new presetational slides
+# (The Regex is based on its equivalent in the Markdown source.
+$wn_markdown_file = '<section class="page">' . $wn_markdown_file . '</section>';
+$rp = "</section><section class=\"page\">";
 $wn_markdown_file =~ s/\s*\[newslide\]\s*/$rp/g;
+#$wn_markdown_file =~ s{^[ ]{0,2}([ ]?\*[ ]?){3,}[ \t]*$}{$rp}gmx;
+#$wn_markdown_file =~ s{^[ ]{0,2}([ ]? -[ ]?){3,}[ \t]*$}{$rp}gmx;
+#$wn_markdown_file =~ s{^[ ]{0,2}([ ]? _[ ]?){3,}[ \t]*$}{$rp}gmx;
+
+# Markdown adds <p> around </section> and <section>
+# Do something about it
+$wn_markdown_file =~ s/<p><\/section><section class="page"><\/p>/<\/section>\n\n<section class="page">/g;
 
 # Insert the former Markdown (now HTML) on its correct
 # place in the template-
