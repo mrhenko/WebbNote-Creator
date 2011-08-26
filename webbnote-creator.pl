@@ -35,8 +35,8 @@ $wn_default_markup = '<!DOCTYPE html>
     <meta charset="UTF-8" />
     <title>WebbNote: Proof of Concept</title>
     <link rel="stylesheet" href="webbnote/core.css" media="screen" />
-    <link rel=”stylesheet” href="webbnote/default_theme.css" media="screen" />
-    <link rel=”stylesheet” href="webbnote/print.css" />
+    <link rel="stylesheet" href="webbnote/default_theme.css" media="screen" />
+    <link rel="stylesheet" href="webbnote/print.css" media="print" />
 </head>
 <body>
 	<article id="keynote">
